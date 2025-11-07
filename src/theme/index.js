@@ -14,69 +14,83 @@ const dhlColors = {
     dark: '#CC9900',
     contrastText: '#000000',
   },
-  background: {
-    default: '#f5f5f5',
-    paper: '#ffffff',
-  },
-  text: {
-    primary: '#333333',
-    secondary: '#666666',
-  },
-  success: {
-    main: '#4CAF50',
-    light: '#81C784',
-    dark: '#388E3C',
-  },
-  warning: {
-    main: '#FF9800',
-    light: '#FFB74D',
-    dark: '#F57C00',
-  },
-  error: {
-    main: '#f44336',
-    light: '#ef5350',
-    dark: '#d32f2f',
-  },
-  info: {
-    main: '#2196F3',
-    light: '#64B5F6',
-    dark: '#1976D2',
-  },
 };
 
-export const theme = createTheme({
-  palette: dhlColors,
+export const getTheme = (mode = 'light') => createTheme({
+  palette: {
+    mode,
+    ...dhlColors,
+    ...(mode === 'light'
+      ? {
+          // Light mode
+          background: {
+            default: '#f5f5f5',
+            paper: '#ffffff',
+          },
+          text: {
+            primary: '#333333',
+            secondary: '#666666',
+          },
+          divider: '#e0e0e0',
+        }
+      : {
+          // Dark mode
+          background: {
+            default: '#121212',
+            paper: '#1e1e1e',
+          },
+          text: {
+            primary: '#ffffff',
+            secondary: '#b0b0b0',
+          },
+          divider: '#333333',
+        }),
+    success: {
+      main: '#4CAF50',
+      light: '#81C784',
+      dark: '#388E3C',
+    },
+    warning: {
+      main: '#FF9800',
+      light: '#FFB74D',
+      dark: '#F57C00',
+    },
+    error: {
+      main: '#f44336',
+      light: '#ef5350',
+      dark: '#d32f2f',
+    },
+    info: {
+      main: '#2196F3',
+      light: '#64B5F6',
+      dark: '#1976D2',
+    },
+  },
   typography: {
     fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
     h1: {
       fontSize: '2.5rem',
       fontWeight: 600,
-      color: dhlColors.text.primary,
     },
     h2: {
       fontSize: '2rem',
       fontWeight: 600,
-      color: dhlColors.text.primary,
     },
     h3: {
       fontSize: '1.75rem',
       fontWeight: 500,
-      color: dhlColors.text.primary,
     },
     h4: {
       fontSize: '1.5rem',
       fontWeight: 500,
-      color: dhlColors.text.primary,
     },
     h5: {
       fontSize: '1.25rem',
       fontWeight: 500,
-      color: dhlColors.text.primary,
     },
     h6: {
       fontSize: '1rem',
       fontWeight: 500,
-      color: dhlColors.text.primary,
     },
     body1: {
       fontSize: '1rem',
@@ -115,8 +129,10 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: 12,
-          boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-          border: '1px solid #e0e0e0',
+          boxShadow: mode === 'light' 
+            ? '0 2px 8px rgba(0,0,0,0.1)' 
+            : '0 2px 8px rgba(0,0,0,0.4)',
+          border: mode === 'light' ? '1px solid #e0e0e0' : '1px solid #333333',
         },
       },
     },
@@ -131,7 +147,7 @@ export const theme = createTheme({
     MuiTableHead: {
       styleOverrides: {
         root: {
-          backgroundColor: '#f8f9fa',
+          backgroundColor: mode === 'light' ? '#f8f9fa' : '#2a2a2a',
         },
       },
     },
@@ -139,7 +155,13 @@ export const theme = createTheme({
       styleOverrides: {
         head: {
           fontWeight: 600,
-          color: dhlColors.text.primary,
+        },
+      },
+    },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          backgroundImage: 'none',
         },
       },
     },
@@ -155,5 +177,8 @@ export const theme = createTheme({
   },
   spacing: 8,
 });
+
+// Backward compatibility
+export const theme = getTheme('light');
 
 export default theme;

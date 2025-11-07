@@ -1,12 +1,10 @@
 import React, { Suspense, lazy } from 'react';
-import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-import { theme } from './theme';
-import { ErrorBoundary } from './components/common';
+import { ThemeProvider } from './contexts/ThemeContext';
+import { ErrorBoundary, ThemeToggle } from './components/common';
 import ToastContainer from './components/common/ToastContainer';
 import LoadingFallback from './components/common/LoadingFallback';
 import { ToastProvider, useToast } from './contexts/ToastContext';
@@ -24,10 +22,13 @@ const AppContent = () => {
     <ErrorBoundary>
       <div className="dashboard" role="main" aria-label="Network Dashboard">
         <header className="dashboard-header" role="banner">
-          <h1 className="dashboard-title">Network Overview</h1>
-          <div className="dashboard-subtitle">
-            Real-time distribution center monitoring and inventory management
+          <div>
+            <h1 className="dashboard-title">Network Overview</h1>
+            <div className="dashboard-subtitle">
+              Real-time distribution center monitoring and inventory management
+            </div>
           </div>
+          <ThemeToggle />
         </header>
         
         <ErrorBoundary>
@@ -71,8 +72,7 @@ const AppContent = () => {
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
+    <ThemeProvider>
       <ToastProvider>
         <AppContent />
       </ToastProvider>

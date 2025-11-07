@@ -1,0 +1,229 @@
+.inventory-movements {
+  position: relative;
+}
+
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  z-index: 10;
+  font-size: 0.9rem;
+}
+
+.error-message {
+  padding: 20px;
+  text-align: center;
+}
+
+.error-message p {
+  margin-bottom: 16px;
+  color: #d32f2f;
+}
+
+.mui-table {
+  margin-top: 0;
+}
+
+.inventory-row {
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.inventory-row:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.inventory-row:focus {
+  outline: 2px solid #D40511;
+  outline-offset: -2px;
+}
+
+.movement-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.movement-description {
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.movement-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.movement-date {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.sku-code {
+  background-color: #f5f5f5;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.number-cell,
+.currency-cell {
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.empty-state {
+  padding: 40px 20px;
+  text-align: center;
+  color: #666;
+}
+
+.empty-state p {
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .action-buttons {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .action-buttons button {
+    width: 100%;
+    min-width: 80px;
+  }
+}
+
+@media (max-width: 960px) {
+  /* Make table scrollable on tablets */
+  .mui-table {
+    overflow-x: auto;
+  }
+  
+  .mui-table table {
+    min-width: 800px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Mobile: Stack table as cards */
+  .mui-table {
+    overflow: visible;
+  }
+  
+  .mui-table table,
+  .mui-table thead,
+  .mui-table tbody,
+  .mui-table th,
+  .mui-table td,
+  .mui-table tr {
+    display: block;
+  }
+  
+  .mui-table thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  
+  .mui-table tr {
+    margin-bottom: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 12px;
+    background: white;
+  }
+  
+  .mui-table td {
+    border: none;
+    position: relative;
+    padding-left: 50%;
+    text-align: right !important;
+  }
+  
+  .mui-table td:before {
+    content: attr(data-label);
+    position: absolute;
+    left: 12px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  .movement-details {
+    text-align: right;
+  }
+  
+  .movement-meta {
+    justify-content: flex-end;
+  }
+  
+  .action-buttons {
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 480px) {
+  .sku-code {
+    font-size: 0.8rem;
+    padding: 2px 6px;
+  }
+  
+  .movement-description {
+    font-size: 0.9rem;
+  }
+  
+  .action-buttons button {
+    font-size: 0.8rem;
+    padding: 4px 8px;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .loading-overlay {
+    background: rgba(30, 30, 30, 0.9);
+  }
+  
+  .inventory-row:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+  
+  .sku-code {
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+  }
+  
+  .movement-date {
+    color: #b0b0b0;
+  }
+  
+  @media (max-width: 768px) {
+    .mui-table tr {
+      background: #1e1e1e;
+      border-color: #333;
+    }
+  }
+}

@@ -1,0 +1,165 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.dashboard {
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.dashboard-header {
+  margin-bottom: 30px;
+  padding: 20px;
+  border-bottom: 1px solid;
+  border-color: rgba(0, 0, 0, 0.12);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.dashboard-title {
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin: 0 0 10px 0;
+}
+
+.dashboard-subtitle {
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 0;
+  opacity: 0.7;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.map-section {
+  grid-column: 1 / -1;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.map-container {
+  height: 400px;
+  width: 100%;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.map-container-inner {
+  height: 100%;
+  width: 100%;
+}
+
+.map-legend {
+  margin-top: 15px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legend-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background-color: var(--legend-color);
+}
+
+.legend-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.main-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.left-panel,
+.right-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .main-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 10px;
+  }
+  
+  .dashboard-header {
+    text-align: center;
+    flex-direction: column;
+    padding: 15px;
+  }
+  
+  .dashboard-title {
+    font-size: 2rem;
+  }
+  
+  .dashboard-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .map-container {
+    height: 300px;
+  }
+  
+  .map-legend {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-title {
+    font-size: 1.5rem;
+  }
+  
+  .map-container {
+    height: 250px;
+  }
+}
