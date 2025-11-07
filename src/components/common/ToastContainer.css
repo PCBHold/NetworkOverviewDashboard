@@ -1,0 +1,93 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.toast-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.toast {
+  pointer-events: all;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  background-color: #ffffff;
+  border: 1px solid #e1e5e9;
+  border-radius: 8px;
+  color: #333333;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-width: 400px;
+  max-width: 600px;
+  animation: fadeIn 0.3s ease-out;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.toast-icon {
+  flex-shrink: 0;
+  color: #666666;
+  margin-top: 2px;
+}
+
+.toast-message {
+  flex: 1;
+  white-space: pre-line;
+}
+
+.toast-close-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  color: #666666;
+  opacity: 0.7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.toast-close-button:hover {
+  opacity: 1;
+  background-color: #f5f5f5;
+}
+
+.toast-close-button:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+/* Variant styles if needed in the future */
+.toast--success {
+  border-left: 4px solid #28a745;
+}
+
+.toast--error {
+  border-left: 4px solid #dc3545;
+}
+
+.toast--warning {
+  border-left: 4px solid #ffc107;
+}
+
+.toast--info {
+  border-left: 4px solid #007bff;
+}
