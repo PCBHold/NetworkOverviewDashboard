@@ -3,7 +3,7 @@
   "name": "network-dashboard",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://github.com/PCBHold/NetworkOverviewDashboard",
+  "homepage": "https://pcbhold.github.io/NetworkOverviewDashboard",
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
