@@ -287,5 +287,6 @@ ErrorBoundary.propTypes = {
   children: PropTypes.node.isRequired,
   fallback: PropTypes.elementType,
   showErrorDetails: PropTypes.bool
-};export { StatusBadge, Button, LoadingSpinner, Card, MetricDisplay, ErrorBoundary } from './index';
+};
+
 export { default as ThemeToggle } from './ThemeToggle';
