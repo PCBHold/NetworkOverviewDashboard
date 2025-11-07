@@ -19,10 +19,10 @@ const InventoryMovements = () => {
   const { movements, loading, error, actions } = useMovements(inventoryMovements);
   const toast = useToast();
 
-  const getDCName = (dcId) => {
+  const getDCName = useCallback((dcId) => {
     const dc = distributionCenters.find(center => center.id === dcId);
     return dc?.name ?? dcId;
-  };
+  }, []);
 
   const handleApprove = useCallback(async (movementId) => {
     const result = await actions.approveMovement(movementId);
